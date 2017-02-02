@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   root 'static#home'
 
   resources :books do
-    resources :entries
+    resources :entries, controller: 'books/entries'
   end
 
-  resources :entries
   devise_for :users
 
 end

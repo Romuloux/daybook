@@ -1,20 +1,16 @@
 <h1>My Day Book</h1>
 
-<%= link_to new_book_entry_path(@book) do %>
-  New Entry
-<% end %>
-
-<div class="book-entries">
+<%= link_to 'New Entry', new_book_entry_path(@book), class: 'btn btn-success' %>
 
 <% @book.entries.order(created_at: :desc).group_by_day(&:created_at).to_a.reverse.to_h.each do |date, entries| %>
   <h3 class="entry-date"><%= date.strftime('%B %e, %Y') %></h3>
 
-  <% entries.each do |entry| %>
-    <div class="book-entry">
-      <h5><%= entry.title %> <small class="pull-right"><%= entry.created_at.strftime('%l:%M%p') %></small></h5>
-      <%= entry.body %>
-    </div>
-  <% end %>
+  <div class="list-group">
+    <% entries.each do |entry| %>
+      <%= link_to book_entry_path(@book, entry), class: 'list-group-item' do %>
+        <h4 class="list-group-item-heading"><%= entry.title %> <small class="pull-right"><%= entry.created_at.strftime('%l:%M%p') %></small></h4>
+        <p class="list-group-item-text"><%= entry.body %></p>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
-
-</div>

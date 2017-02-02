@@ -7,5 +7,7 @@ Built to solve the need for a personal journal of daily business. Easy to print 
 
 ## Wishlist
 
+- Filter by date, content, and title of entries
+- Let a user select their timezone.
 - Slack Integration, post your entries directly from Slack
 - Calendar Integration, show completed meetings as an entry

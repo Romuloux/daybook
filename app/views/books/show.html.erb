@@ -1,6 +1,6 @@
-<h1>My Day Book</h1>
+<h1>My Day Book <%= link_to 'New Entry', new_book_entry_path(@book), class: 'btn btn-success pull-right' %></h1>
 
-<%= link_to 'New Entry', new_book_entry_path(@book), class: 'btn btn-success' %>
+
 
 <% @book.entries.order(created_at: :desc).group_by_day(&:created_at).to_a.reverse.to_h.each do |date, entries| %>
   <h3 class="entry-date"><%= date.strftime('%B %e, %Y') %></h3>
